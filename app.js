@@ -1,18 +1,37 @@
 'use strict';
 const END = 40;
 
+
+let memo = new Map();
+memo.set(0,0);
+memo.set(1,1);
+
 let fib = n =>{
-    if(n===0){
-        return 0;
-    }else if(n===1){
-        return 1;
+    if( memo.has(n) ){
+        return memo.get(n);
     }else{
-        return fib(n-1) + fib(n-2);
+        const val = memo.get(n-1)+memo.get(n-2);
+        memo.set(n,val);
+        return val
     }
 }
-for(let i=0; i<=40; i++){
+
+for( let i=0; i<=END; i++ ){
     console.log(fib(i));
 }
+// saiki
+// let fib = n =>{
+//     if(n===0){
+//         return 0;
+//     }else if(n===1){
+//         return 1;
+//     }else{
+//         return fib(n-1) + fib(n-2);
+//     }
+// }
+// for(let i=0; i<=40; i++){
+//     console.log(fib(i));
+// }
 
 // let fib = [0,1];
 // console.log(fib[0])
